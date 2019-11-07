@@ -17,3 +17,8 @@ Then copy the included mfplat.dll to the same directory as the `.exe` (e.g. re2.
 installcab.py is exactly the same as upstream (https://github.com/tonix64/python-installcab/blob/master/installcab.py
 
 The difference between this is a better shell script, and almost no manual intervention needed.
+
+### Dependencies
+- python
+- cabextract
+- wine
