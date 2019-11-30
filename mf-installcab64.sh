@@ -18,4 +18,5 @@ python2 installcab.py windows6.1-KB976932-X64.exe wmadmod
 python2 installcab.py windows6.1-KB976932-X64.exe wmvdecod
 python2 installcab.py windows6.1-KB976932-X64.exe wmadmod
 
-echo -e "\nNow you need to get mfplat.dll in your application directory"
+echo -e "\nNow you need to get syswow64/mfplat.dll in your application directory"
+
