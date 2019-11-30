@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
 import os
 import sys
 import subprocess
@@ -82,7 +82,7 @@ def get_winebin(arch):
 
 def check_dll_arch(dll_path):
     out = subprocess.check_output(['file', dll_path])
-    if 'x86-64' in out:
+    if b'x86-64' in out:
         return 'win64'
     else:
         return 'win32'
@@ -124,8 +124,7 @@ def process_value(rv, arch):
     elif value_type == 'REG_NONE':
         value = None
     elif value_type == 'REG_EXPAND_SZ':
-        # not sure if we should replace this ones at this point:
-        # caps can vary in the pattern
+        # TODO: caps can vary in the pattern
         value = value.replace("%SystemRoot%", "C:\\windows")
         value = value.replace("%ProgramFiles%", "C:\\windows\\Program Files")
         value = value.replace("%WinDir%", "C:\\windows")
@@ -172,7 +171,7 @@ def process_manifest(file_name):
     arch = parse_manifest_arch(elmt)
     registry_keys = elmt.findall("{urn:schemas-microsoft-com:asm.v3}registryKeys")
     if len(registry_keys):
-        for registry_key in registry_keys[0].getchildren():
+        for registry_key in list(registry_keys[0]):
             key = process_key(registry_key.attrib["keyName"])
             out += "[%s]\n" % key
             for rv in registry_key.findall("{urn:schemas-microsoft-com:asm.v3}registryValue"):
@@ -306,3 +305,4 @@ if __name__ == '__main__':
 
     # clean up
     cleanup()
+
