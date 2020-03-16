@@ -22,7 +22,7 @@ def cleanup():
         shutil.rmtree(tmpdir)
 
 def bad_exit(text):
-    print(text)
+    print("ERROR: %s" % text)
     cleanup()
     sys.exit(1)
 
@@ -45,6 +45,16 @@ dest_map = {
     "win64:wow64": "System32",
     "win32:win32": "System32"
 }
+
+def check_bin_exists(pgm):
+    """Return true if it the pgm is available 
+    inside PATH env variable"""
+    path=os.getenv('PATH')
+    for p in path.split(os.path.pathsep):
+        p=os.path.join(p,pgm)
+        if os.path.exists(p) and os.access(p,os.X_OK):
+            return True
+    return False
 
 def check_wineprefix_arch(prefix_path):
     if not os.path.exists(prefix_path):
@@ -78,6 +88,11 @@ def get_winebin(arch):
         winebin = 'wine'
     else:
         winebin = 'wine64'
+    
+    if (not check_bin_exists(winebin)):
+        bad_exit("%s is not present in the path.\n" \
+            "Please consider to use '-proton' option or install wine on your system.\n" \
+            "See documentation for more details." % winebin)
     return winebin
 
 def check_dll_arch(dll_path):
