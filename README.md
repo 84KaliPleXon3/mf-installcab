@@ -13,7 +13,7 @@ Just set WINEPREFIX and run install-mf-64.sh like this
 
 `WINEPREFIX="/dev/brain/wine prefixes can be anywhere/folder" ./install-mf-64.sh`
 
-Steam stores Proton Wine prefixes as <STEAM FOLDER>/steamapps/compatdata/<GAME ID>/pfx
+Steam stores Proton Wine prefixes as \<STEAM FOLDER\>/steamapps/compatdata/\<GAME ID\>/pfx
 
 Optionally you can use Proton's Wine instead of your system's Wine. This requires to provide the `-proton` argument and set PROTON like
 
