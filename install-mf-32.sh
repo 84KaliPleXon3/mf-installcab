@@ -18,6 +18,9 @@ if [ "$1" = "-proton" ]; then
     check_sanity "$PROTON" dist/bin
 
     export PATH="$PROTON/dist/bin:$PATH"
+    export WINESERVER="$PROTON/dist/bin/wineserver"
+    export WINELOADER="$PROTON/dist/bin/wine"
+    export WINEDLLPATH="$PROTON/dist/lib/wine:$PROTON/dist/lib64/wine"
 fi
 
 set -e
