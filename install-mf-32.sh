@@ -1,6 +1,24 @@
 #!/bin/sh
 
-[ -z "$WINEPREFIX" ] && echo "WINEPREFIX not set" && exit 1
+check_env() {
+    [ -z "$1" ] && echo "$2 is not set" && exit 1
+}
+
+check_sanity() {
+    [ ! -d "$1/$2" ] && echo "$1 isn't a valid path" && exit 1
+}
+
+check_env "$WINEPREFIX" WINEPREFIX
+check_sanity "$WINEPREFIX" drive_c
+
+# User instructions:
+# Set PROTON to a Proton folder just like WINEPREFIX, pass -proton to script
+if [ "$1" = "-proton" ]; then
+    check_env "$PROTON" PROTON
+    check_sanity "$PROTON" dist/bin
+
+    export PATH="$PROTON/dist/bin:$PATH"
+fi
 
 set -e
 
