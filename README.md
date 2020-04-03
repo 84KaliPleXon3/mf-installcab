@@ -3,7 +3,6 @@ Installcab based Media Foundation workaround for Wine
 
 ### Known working games:
 
-- Resident Evil 3
 - Resident Evil 2
 - Resident Evil 7
 - Darksiders Warmastered Edition
