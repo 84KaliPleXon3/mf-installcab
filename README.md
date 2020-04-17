@@ -3,7 +3,7 @@ Installcab based Media Foundation workaround for Wine
 
 ### Known working games:
 
-- Resident Evil 3 (Create prefix with and use Proton-5.4-GE-1)
+- Resident Evil 3 (Mileage may vary)
 - Resident Evil 2
 - Resident Evil 7
 - Darksiders Warmastered Edition
